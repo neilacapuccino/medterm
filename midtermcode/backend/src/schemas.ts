@@ -19,7 +19,7 @@ export const loginSchema = z.object({
   body: authBodySchema,
 });
 
-export const microserviceBodySchema = z.object({
+export const serviceBodySchema = z.object({
    name: z
     .string()
     .min(3, "name is required")
@@ -39,12 +39,12 @@ export const microserviceBodySchema = z.object({
     .string(),
 });
 
-export const createMicroserviceSchema = z.object({
-  body: microserviceBodySchema,
+export const createServiceSchema = z.object({
+  body: serviceBodySchema,
 });
 
 // PATCH /api/incidents/:id -> spec: "UPDATE Status/Severity" -> ONLY these 2 fields
-export const updateMicroserviceSchema = z.object({
+export const updateServiceSchema = z.object({
   body: z.object({
     environment: z.enum(['DEVELOPMENT', 'STAGING', 'PRODUCTION']).optional(),
     status: z.enum(['HEALTHY', 'DEGRADED', 'DOWN']).optional(),

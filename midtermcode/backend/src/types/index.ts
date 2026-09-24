@@ -6,6 +6,7 @@ export interface User {
 }
 export type Environment = 'DEVELOPMENT' | 'STAGING' | 'PRODUCTION';
 export type ServiceStatus = 'HEALTHY' | 'DEGRADED' | 'DOWN';
+
 export interface Microservice {
  id: string;
  name: string;

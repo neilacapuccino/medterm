@@ -3,7 +3,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import authRoutes from "./authRoutes";            // STEP 3
-import microserviceRoutes from "./microserviceRoutes";    // STEP 6
+import serviceRoutes from "./serviceRoutes";    // STEP 6
 
 dotenv.config();
 
@@ -13,7 +13,7 @@ app.use(cors());           // lets the React app (another port) call this server
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);              // STEP 3
-app.use("/api/microservices", microserviceRoutes);     // STEP 6
+app.use("/api/services", serviceRoutes);     // STEP 6
 
 const PORT = process.env.PORT || 5000;
 

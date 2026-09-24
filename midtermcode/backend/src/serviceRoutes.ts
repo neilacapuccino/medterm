@@ -3,7 +3,7 @@ import { Router } from "express";
 import { pool } from "./db";
 import { Microservice } from "./types";
 import { validateResource } from "./validate";
-import { createMicroserviceSchema, updateMicroserviceSchema } from "./schemas";
+import { createServiceSchema, updateServiceSchema } from "./schemas";
 import { authenticateToken } from "./authMiddleware";
 
 const router = Router();
@@ -26,7 +26,7 @@ router.get("/", authenticateToken, async (_req, res) => {
 router.post(
   "/",
   authenticateToken,
-  validateResource(createMicroserviceSchema),
+  validateResource(createServiceSchema),
   async (req, res) => {
     const {
      name,
@@ -75,7 +75,7 @@ router.post(
 router.patch(
   "/:id",
   authenticateToken,
-  validateResource(updateMicroserviceSchema),
+  validateResource(updateServiceSchema),
   async (req, res) => {
     const { id } = req.params;
     const { environment, status }: Microservice = req.body;
