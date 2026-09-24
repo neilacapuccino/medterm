@@ -1,14 +1,14 @@
-// STEP F2 - global state (Context + useReducer), same shape as Discord's PieContext
-import { createContext, useReducer, type Dispatch, type ReactNode } from "react";
+
+import React, { createContext, useReducer, type Dispatch, type ReactNode } from "react";
 import type { State, Action } from "../types";
 
 const initialState: State = {
-    user: null,
-    token: localStorage.getItem("token"), // still logged in after a page refresh
-    services: [],
-    loading: false,
-    error: null,
-    selectedEnvironment: "DEVELOPMENT"
+  user: null,
+  token: localStorage.getItem("token"), 
+  services: [],
+  loading: false,
+  error: null,
+  selectedEnvironment: "DEVELOPMENT"
 };
 
 const microserviceReducer = (state: State, action: Action): State => {
