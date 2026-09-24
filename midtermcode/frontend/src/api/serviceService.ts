@@ -22,15 +22,15 @@ export const fetchMicroservice = async (token: string | null): Promise<Microserv
 // POST /api/incidents  (STEP F5)
 export const createMicroservice = async (
   token: string | null,
-  microservice: Partial<Microservice>
+  services: Partial<Microservice>
 ): Promise<Microservice> => {
-  const res = await fetch(`${API_URL}/microservices`, {
+  const res = await fetch(`${API_URL}/services`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(microservice),
+    body: JSON.stringify(services),
   });
 
   const data = await res.json();
