@@ -19,32 +19,38 @@ export const loginSchema = z.object({
   body: authBodySchema,
 });
 
+export const microserviceBodySchema = z.object({
+   name: z
+    .string()
+    .min(3, "name is required")
+    .max(60, "name is too long"),
 
-// ========================================
-// INCIDENTS  (STEP 6 - added when making incidentRoutes.ts)
-// ========================================
-
-export const incidentBodySchema = z.object({
-  title: z.string().min(1, "title is required"),
-  description: z.string().min(1, "description is required"),
-  severity: z.enum(["low", "medium", "high", "critical"]).optional().default("low"),
-  status: z.enum(["open", "in_progress", "resolved"]).optional().default("open"),
+  endpoointUrl: z
+    .string(),
+    
+  environment: z
+    .enum(['DEVELOPMENT', 'STAGING', 'PRODUCTION'])
+    .default("DEVELOPMENT"),
+    
+  status: z
+    .enum(['HEALTHY', 'DEGRADED', 'DOWN'])
+    .default("HEALTHY"),
+  version: z
+    .string(),
 });
 
-export const createIncidentSchema = z.object({
-  body: incidentBodySchema,
+export const createMicroserviceSchema = z.object({
+  body: microserviceBodySchema,
 });
 
 // PATCH /api/incidents/:id -> spec: "UPDATE Status/Severity" -> ONLY these 2 fields
-export const updateIncidentSchema = z.object({
+export const updateMicroserviceSchema = z.object({
   body: z.object({
-    status: z.enum(["open", "in_progress", "resolved"]).optional(),
-    severity: z.enum(["low", "medium", "high", "critical"]).optional(),
+    environment: z.enum(['DEVELOPMENT', 'STAGING', 'PRODUCTION']).optional(),
+    status: z.enum(['HEALTHY', 'DEGRADED', 'DOWN']).optional(),
   }),
 
   params: z.object({
-    // UUID because schema.sql uses UUID ids
-    // (with SERIAL ids it would be: z.string().regex(/^\d+$/, "ID must be a number"))
     id: z.uuid("ID must be a valid id"),
   }),
 });
