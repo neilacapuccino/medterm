@@ -2,8 +2,8 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import authRoutes from "./authRoutes";            // STEP 3
-import microserviceRoutes from "./microserviceRoutes";    // STEP 6
+import authRoutes from "./authRoutes";          
+import microserviceRoutes from "./microserviceRoutes";    
 
 dotenv.config();
 
