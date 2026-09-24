@@ -1,4 +1,3 @@
-// STEP 3 - login route (same as practice-c login, but with email)
 import { Router } from "express";
 import bcrypt from "bcryptjs";
 import { pool } from "./db";
@@ -10,6 +9,21 @@ const router = Router();
 
 const JWT_SECRET = process.env.JWT_SECRET || "fallback_secret";
 
+//testing only
+router.get("/login", async (_req, res) => {
+  try {
+    const result = await pool.query(
+      `SELECT * FROM users
+       ORDER BY id DESC`
+    );
+
+    res.json(result.rows);
+  } catch (error) {
+    res.status(500).json({
+      error: (error as Error).message,
+    });
+  }
+});
 
 router.post(
   "/login",
@@ -54,7 +68,6 @@ router.post(
         }
       );
 
-      // the frontend needs the token AND the user (for SET_AUTH)
       res.json({
         message: "Login successful",
         token,

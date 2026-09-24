@@ -19,7 +19,7 @@ export const MicroserviceForm: React.FC = () => {
     try {
       const newMicroservice = await createMicroservice(state.token, { user, environment, status });
 
-      dispatch({ type: "CREATE_SUCCESS", payload: newMicroservice });
+      dispatch({ type: "CREATE_SERVICE_SUCCESS", payload: newMicroservice });
 
       // clear the form
       setUser("");
