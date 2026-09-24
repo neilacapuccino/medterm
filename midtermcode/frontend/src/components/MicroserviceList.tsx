@@ -3,7 +3,6 @@
 import { useContext, useEffect } from "react";
 import { MicroserviceContext } from "../context/MicroserviceContext";
 import { fetchMicroservice, updateMicroservice, deleteMicroservice } from "../api/serviceService";
-import { type Environment, ServiceStatus, type Microservice } from "../types";
 import { Grid, Card, Row, Select, DeleteButton } from "./styles";
 
 export const MicroserviceList: React.FC = () => {
@@ -53,18 +52,18 @@ export const MicroserviceList: React.FC = () => {
 
   return (
     <Grid>
-      {state.incidents.map((incident) => (
-        <Card key={incident.id}>
-          <h4>{incident.title}</h4>
-          <p>{incident.description}</p>
+      {state.services.map((services) => (
+        <Card key={services.id}>
+          <h4>{services.user}</h4>
+          <p>{services.environment}</p>
 
           <Row>
             <span>Status</span>
             <Select
-              value={incident.severity}
-              onChange={(e) => handleUpdate(incident.id, { severity: e.target.value })}
+              value={services.status}
+              onChange={(e) => handleUpdate(services.id, { status: e.target.value })}
             >
-              {SEVERITIES.map((s) => (
+              {status.map((s) => (
                 <option key={s} value={s}>
                   {s}
                 </option>
@@ -75,10 +74,10 @@ export const MicroserviceList: React.FC = () => {
           <Row>
             <span>Status</span>
             <Select
-              value={incident.status}
-              onChange={(e) => handleUpdate(incident.id, { status: e.target.value })}
+              value={services.status}
+              onChange={(e) => handleUpdate(services.id, { status: e.target.value })}
             >
-              {STATUSES.map((s) => (
+              {status.map((s) => (
                 <option key={s} value={s}>
                   {s}
                 </option>
@@ -86,7 +85,7 @@ export const MicroserviceList: React.FC = () => {
             </Select>
           </Row>
 
-          <DeleteButton onClick={() => handleDelete(incident.id)}>Delete</DeleteButton>
+          <DeleteButton onClick={() => handleDelete(services.id)}>Delete</DeleteButton>
         </Card>
       ))}
     </Grid>

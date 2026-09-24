@@ -30,8 +30,8 @@ const microserviceReducer = (state: State, action: Action): State => {
       // replace the one with the same id, keep the others
       return {
         ...state,
-        services: state.services.map((service) =>
-          service.id === action.payload.id ? action.payload : service
+        services: state.services.map((services) =>
+          services.id === action.payload.id ? action.payload : services
         ),
         error: null,
       };
@@ -40,7 +40,7 @@ const microserviceReducer = (state: State, action: Action): State => {
       // keep every service EXCEPT the deleted id
       return {
         ...state,
-        services: state.services.filter((service) => service.id !== action.payload),
+        services: state.services.filter((services) => services.id !== action.payload),
         error: null,
       };
 

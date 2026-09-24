@@ -26,3 +26,6 @@ CREATE TABLE microservices (
   created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   UNIQUE (name, environment)
 );
+
+INSERT INTO users (email, password_hash)
+VALUES ('admin@pulsedesk.com', '$2b$10$cNW75jErgSgjMU5kz3L8S..cJqdmZiHu2ZICuF3T5KE7v0rMuUOxS');

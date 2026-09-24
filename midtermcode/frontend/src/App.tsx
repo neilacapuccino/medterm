@@ -10,7 +10,7 @@ import { Container, Row, LogoutButton, ErrorText } from "./components/styles";
 // useContext a provider that it renders itself
 function MainApp() {
   const context = useContext(MicroserviceContext);
-  if (!context) throw new Error("MainApp must be used within IncidentProvider");
+  if (!context) throw new Error("MainApp must be used within MicroserviceProvider");
   const { state, dispatch } = context;
 
   const handleLogout = () => {

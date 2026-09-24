@@ -2,7 +2,6 @@
 import { useContext, useState } from "react";
 import { MicroserviceContext } from "../context/MicroserviceContext";
 import { createMicroservice } from "../api/serviceService";
-import { Environment } from "../types";
 import { Form, Input, TextArea, Select, Button } from "./styles";
 
 export const MicroserviceForm: React.FC = () => {
