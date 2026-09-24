@@ -11,7 +11,7 @@ export const validateResource =
         query: req.query,
         params: req.params,
       });
-
+      
       next();
     } catch (error) {
       if (error instanceof ZodError) {
